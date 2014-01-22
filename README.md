@@ -1,6 +1,6 @@
 # ngraph.three
 
-3D graph rendered powered by three.js
+This is a 3d graph renderer, which uses [three.js](https://github.com/mrdoob/three.js) as a rendering engine. This library is a part of [ngraph](https://github.com/anvaka/ngraph) project.
 
 # install
 
