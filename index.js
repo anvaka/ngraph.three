@@ -120,6 +120,11 @@ module.exports = function (graph, settings) {
       return this;
     },
 
+    /**
+     * Stops animation and deallocates all alocated resources
+     */
+    dispose: dispose,
+
     // expose properties
     renderer: renderer,
     camera: camera,
@@ -149,6 +154,48 @@ module.exports = function (graph, settings) {
     layout.step();
     controls.update(1);
     renderOneFrame();
+  }
+
+  function dispose(options) {
+    // let clients selectively choose what to dispose
+    options = merge(options, {
+      layout: true,
+      dom: true,
+      scene: true
+    });
+
+    run = function noop() {} // next RAF will go here
+    renderOneFrame = function () { throw new Error('ngraph.three is disposed.'); }
+
+    graph.off('changed', onGraphChanged);
+    if (options.layout) layout.dispose();
+    if (options.scene) {
+      scene.traverse(function (object) {
+        if (typeof object.deallocate === 'function') {
+          object.deallocate();
+        }
+        disposeThreeObject(object.geometry);
+        disposeThreeObject(object.material);
+      });
+    }
+
+    if (options.dom) {
+      var domElement = renderer.domElement;
+      if(domElement && domElement.parentNode) {
+        domElement.parentNode.removeChild(domElement);
+      }
+    }
+  }
+
+  function disposeThreeObject(obj) {
+    if (!obj) return;
+
+    if (obj.deallocate === 'function') {
+      obj.deallocate();
+    }
+    if (obj.dispose === 'function') {
+      obj.dispose();
+    }
   }
 
   function renderOneFrame() {
