@@ -6,6 +6,7 @@ lib-cov
 *.out
 *.pid
 *.gz
+bundle.js
 
 pids
 logs
