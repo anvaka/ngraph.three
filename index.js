@@ -314,7 +314,7 @@ module.exports = function (graph, settings) {
     });
 
     Object.keys(linkUI).forEach(function (linkId) {
-      scene.remove(linkUI[nodeId]);
+      scene.remove(linkUI[linkId]);
     });
 
     graph.forEachLink(initLink);
