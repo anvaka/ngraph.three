@@ -4,6 +4,7 @@ module.exports = function (graph, settings) {
     interactive: false
   });
 
+  var beforeFrameRender;
   var layout = createLayout(settings);
   var renderer = createRenderer(settings);
   var camera = createCamera(settings);
@@ -20,6 +21,8 @@ module.exports = function (graph, settings) {
   var graphics = {
     run: run,
     renderOneFrame: renderOneFrame,
+
+    onFrame: onFrame,
 
     /**
      * Gets UI object for a given node id
@@ -136,6 +139,11 @@ module.exports = function (graph, settings) {
 
   return graphics;
 
+  function onFrame(cb) {
+    // todo: allow multile callbacks
+    beforeFrameRender = cb;
+  }
+
   function initialize() {
     nodeUIBuilder = defaults.createNodeUI;
     nodeRenderer  = defaults.nodeRenderer;
@@ -164,6 +172,7 @@ module.exports = function (graph, settings) {
       scene: true
     });
 
+    beforeFrameRender = null;
     run = function noop() {}; // next RAF will go here
     renderOneFrame = function () { throw new Error('ngraph.three is disposed.'); };
 
@@ -199,6 +208,9 @@ module.exports = function (graph, settings) {
   }
 
   function renderOneFrame() {
+    if (beforeFrameRender) {
+      beforeFrameRender();
+    }
     Object.keys(linkUI).forEach(renderLink);
     Object.keys(nodeUI).forEach(renderNode);
     renderer.render(scene, camera);
