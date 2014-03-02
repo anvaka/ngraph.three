@@ -137,11 +137,11 @@ module.exports = function (graph, settings) {
   return graphics;
 
   function initialize() {
-    nodeUIBuilder = defaults.createNodeUI,
-    nodeRenderer  = defaults.nodeRenderer,
-    linkUIBuilder = defaults.createLinkUI,
+    nodeUIBuilder = defaults.createNodeUI;
+    nodeRenderer  = defaults.nodeRenderer;
+    linkUIBuilder = defaults.createLinkUI;
     linkRenderer  = defaults.linkRenderer;
-    nodeUI = {}, linkUI = {}; // Storage for UI of nodes/links
+    nodeUI = {}; linkUI = {}; // Storage for UI of nodes/links
 
     graph.forEachLink(initLink);
     graph.forEachNode(initNode);
@@ -164,8 +164,8 @@ module.exports = function (graph, settings) {
       scene: true
     });
 
-    run = function noop() {} // next RAF will go here
-    renderOneFrame = function () { throw new Error('ngraph.three is disposed.'); }
+    run = function noop() {}; // next RAF will go here
+    renderOneFrame = function () { throw new Error('ngraph.three is disposed.'); };
 
     graph.off('changed', onGraphChanged);
     if (options.layout) layout.dispose();
@@ -299,7 +299,7 @@ module.exports = function (graph, settings) {
 
   function createControls() {
     if (settings.interactive) {
-      var FlyControls = require('./lib/flyControls')
+      var FlyControls = require('./lib/flyControls');
       var controls = new FlyControls(camera);
       return controls;
     }
@@ -320,4 +320,4 @@ module.exports = function (graph, settings) {
     graph.forEachLink(initLink);
     graph.forEachNode(initNode);
   }
-}
+};
