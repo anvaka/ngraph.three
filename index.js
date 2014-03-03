@@ -5,6 +5,7 @@ module.exports = function (graph, settings) {
   });
 
   var beforeFrameRender;
+  var isStable = false;
   var layout = createLayout(settings);
   var renderer = createRenderer(settings);
   var camera = createCamera(settings);
@@ -159,7 +160,9 @@ module.exports = function (graph, settings) {
 
   function run() {
     requestAnimationFrame(run);
-    layout.step();
+    if (!isStable) {
+      isStable = layout.step();
+    }
     controls.update(1);
     renderOneFrame();
   }
@@ -247,6 +250,7 @@ module.exports = function (graph, settings) {
   }
 
   function onGraphChanged(changes) {
+    resetStable();
     for (var i = 0; i < changes.length; ++i) {
       var change = changes[i];
       if (change.changeType === 'add') {
@@ -269,6 +273,10 @@ module.exports = function (graph, settings) {
         }
       }
     }
+  }
+
+  function resetStable() {
+    isStable = false;
   }
 
   function createLayout(settings) {
