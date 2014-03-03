@@ -54,7 +54,6 @@ module.exports = function (graph, settings) {
      * @returns {object} this for chaining.
      */
     createNodeUI : function (createNodeUICallback) {
-      nodeUI = {};
       nodeUIBuilder = createNodeUICallback;
       rebuildUI();
       return this;
@@ -98,7 +97,6 @@ module.exports = function (graph, settings) {
      * @returns {object} this for chaining.
      */
     createLinkUI : function (createLinkUICallback) {
-      linkUI = {};
       linkUIBuilder = createLinkUICallback;
       rebuildUI();
       return this;
@@ -334,10 +332,12 @@ module.exports = function (graph, settings) {
     Object.keys(nodeUI).forEach(function (nodeId) {
       scene.remove(nodeUI[nodeId]);
     });
+    nodeUI = {};
 
     Object.keys(linkUI).forEach(function (linkId) {
       scene.remove(linkUI[linkId]);
     });
+    linkUI = {};
 
     graph.forEachLink(initLink);
     graph.forEachNode(initNode);
