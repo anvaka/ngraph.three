@@ -6,6 +6,7 @@ module.exports = function (graph, settings) {
 
   var beforeFrameRender;
   var isStable = false;
+  var disposed = false;
   var layout = createLayout(settings);
   var renderer = createRenderer(settings);
   var camera = createCamera(settings);
@@ -159,6 +160,8 @@ module.exports = function (graph, settings) {
   }
 
   function run() {
+    if (disposed) return;
+
     requestAnimationFrame(run);
     if (!isStable) {
       isStable = layout.step();
@@ -169,6 +172,7 @@ module.exports = function (graph, settings) {
 
   function dispose(options) {
     // let clients selectively choose what to dispose
+    disposed = true;
     options = merge(options, {
       layout: true,
       dom: true,
@@ -176,8 +180,6 @@ module.exports = function (graph, settings) {
     });
 
     beforeFrameRender = null;
-    run = function noop() {}; // next RAF will go here
-    renderOneFrame = function () { throw new Error('ngraph.three is disposed.'); };
 
     graph.off('changed', onGraphChanged);
     if (options.layout) layout.dispose();
