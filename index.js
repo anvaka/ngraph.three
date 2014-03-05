@@ -214,6 +214,7 @@ module.exports = function (graph, settings) {
     if (beforeFrameRender) {
       beforeFrameRender();
     }
+    // todo: this adds gc pressure. remove functional iterators
     Object.keys(linkUI).forEach(renderLink);
     Object.keys(nodeUI).forEach(renderNode);
     renderer.render(scene, camera);
