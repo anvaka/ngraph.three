@@ -296,8 +296,15 @@ module.exports = function (graph, settings) {
 
     var isWebGlSupported = ( function () { try { var canvas = document.createElement( 'canvas' ); return !! window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ); } catch( e ) { return false; } } )();
     var renderer = isWebGlSupported ? new THREE.WebGLRenderer(settings) : new THREE.CanvasRenderer(settings);
-    var container = settings.container || window;
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    var width, height;
+    if (settings.container) {
+      width = settings.container.clientWidth;
+      height = settings.container.clientHeight;
+    } else {
+      width = window.innerWidth;
+      height = window.innerHeight;
+    }
+    renderer.setSize(width, height);
 
     if (settings.container) {
       settings.container.appendChild(renderer.domElement);
