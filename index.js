@@ -1,3 +1,5 @@
+var THREE = require('three');
+
 module.exports = function (graph, settings) {
   var merge = require('ngraph.merge');
   settings = merge(settings, {
@@ -11,7 +13,6 @@ module.exports = function (graph, settings) {
   var renderer = createRenderer(settings);
   var camera = createCamera(settings);
   var scene = settings.scene || new THREE.Scene();
-  var controls = createControls();
 
   var defaults = require('./lib/defaults');
 
@@ -19,8 +20,10 @@ module.exports = function (graph, settings) {
   var nodeUIBuilder, nodeRenderer, linkUIBuilder, linkRenderer;
 
   var nodeUI, linkUI; // Storage for UI of nodes/links
+  var controls = { update: function noop() {} };
 
   var graphics = {
+    THREE: THREE, // expose THREE so that clients will not have to require it twice.
     run: run,
     renderOneFrame: renderOneFrame,
 
@@ -155,6 +158,8 @@ module.exports = function (graph, settings) {
     graph.forEachNode(initNode);
 
     graph.on('changed', onGraphChanged);
+
+    if (settings.interactive) createControls();
   }
 
   function run() {
@@ -164,7 +169,7 @@ module.exports = function (graph, settings) {
     if (!isStable) {
       isStable = layout.step();
     }
-    controls.update(1);
+    controls.update();
     renderOneFrame();
   }
 
@@ -196,6 +201,10 @@ module.exports = function (graph, settings) {
       if(domElement && domElement.parentNode) {
         domElement.parentNode.removeChild(domElement);
       }
+    }
+
+    if (settings.interactive) {
+      controls.removeEventListener(change, renderOneFrame);
     }
   }
 
@@ -326,14 +335,13 @@ module.exports = function (graph, settings) {
   }
 
   function createControls() {
-    if (settings.interactive) {
-      var FlyControls = require('./lib/flyControls');
-      var controls = new FlyControls(camera);
-      return controls;
-    }
-    return {
-      update: function () {} // noop
-    };
+    var Controls = require('three.trackball');
+    controls = new Controls(camera);
+    controls.panSpeed = 0.8;
+    controls.staticMoving = true;
+    controls.dynamicDampingFactor = 0.3;
+    controls.addEventListener('change', renderOneFrame);
+    graphics.controls = controls;
   }
 
   function rebuildUI() {
