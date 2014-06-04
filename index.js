@@ -204,7 +204,7 @@ module.exports = function (graph, settings) {
     }
 
     if (settings.interactive) {
-      controls.removeEventListener(change, renderOneFrame);
+      controls.removeEventListener('change', renderOneFrame);
     }
   }
 
