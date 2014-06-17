@@ -3,7 +3,7 @@ var THREE = require('three');
 module.exports = function (graph, settings) {
   var merge = require('ngraph.merge');
   settings = merge(settings, {
-    interactive: false
+    interactive: true
   });
 
   var beforeFrameRender;
