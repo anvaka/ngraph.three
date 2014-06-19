@@ -2,6 +2,7 @@ module.exports.main = function () {
   var graph = require('ngraph.graph')();
   var threeGraphics = require('../../')(graph);
 
+  var THREE = threeGraphics.THREE;
 
   // tell graphics we want custom UI
   threeGraphics.createNodeUI(function () {
