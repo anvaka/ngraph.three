@@ -4,9 +4,9 @@ This is a 3d graph renderer, which uses [three.js](https://github.com/mrdoob/thr
 
 # usage
 
-Basic usage:
+Basic example:
 
-```
+``` js
 // Create graph:
 var createGraph = require('ngraph.graph');
 var graph = createGraph();
