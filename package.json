@@ -4,7 +4,7 @@
   "description": "3D graph rendered powered by three.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "examples": "cd ./example/basic && browserify -s ngraph index.js  > bundle.js; cd ../dynamic && browserify -s ngraph index.js  > bundle.js"
   },
   "keywords": [
     "ngraph",
