@@ -1,4 +1,4 @@
-var THREE = require('three');
+var THREE = require('./lib/three');
 
 module.exports = function (graph, settings) {
   var merge = require('ngraph.merge');
