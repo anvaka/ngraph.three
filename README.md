@@ -19,7 +19,7 @@ var graphics = createThree(graph);
 graphics.run(); // begin animation loop
 ```
 
-Very often it is required to do something with scene before animation fram is rendered. To do so
+Very often it is required to do something with scene before animation frame is rendered. To do so
 use `onFrame()` callback:
 
 ``` js
