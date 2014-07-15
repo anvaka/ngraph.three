@@ -19,6 +19,19 @@ var graphics = createThree(graph);
 graphics.run(); // begin animation loop
 ```
 
+Very often it is required to do something with scene before animation fram is rendered. To do so
+use `onFrame()` callback:
+
+``` js
+var graphics = createThree(graph);
+
+graphics.onFrame(function() {
+ console.log('Frame is being rendered');
+});
+graphics.run(); // begin animation loop
+```
+
+
 # examples
 Many examples are available in [ngraph](https://github.com/anvaka/ngraph/tree/master/examples/three.js) repository
 
