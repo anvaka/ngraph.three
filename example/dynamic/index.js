@@ -27,7 +27,7 @@ module.exports.main = function () {
   threeGraphics.camera.position.z = 1000;
   // begin rendering loop:
   threeGraphics.run();
-}
+};
 
 var niceColors = [
  0x1f77b4, 0xaec7e8,
