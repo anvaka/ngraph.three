@@ -205,6 +205,7 @@ module.exports = function (graph, settings) {
 
     if (settings.interactive) {
       controls.removeEventListener('change', renderOneFrame);
+      controls.dispose();
     }
   }
 
@@ -336,7 +337,7 @@ module.exports = function (graph, settings) {
 
   function createControls() {
     var Controls = require('three.trackball');
-    controls = new Controls(camera);
+    controls = new Controls(camera, renderer.domElement);
     controls.panSpeed = 0.8;
     controls.staticMoving = true;
     controls.dynamicDampingFactor = 0.3;

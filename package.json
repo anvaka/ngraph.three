@@ -22,7 +22,7 @@
     "ngraph.forcelayout3d": "0.0.0",
     "ngraph.merge": "0.0.1",
     "three": "0.68.0",
-    "three.trackball": "0.0.0"
+    "three.trackball": "0.0.1"
   },
   "devDependencies": {
     "browserify": "~3.23.1",
