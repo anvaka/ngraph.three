@@ -7,7 +7,7 @@ module.exports.main = function () {
   // tell graphics we want custom UI
   threeGraphics.createNodeUI(function () {
     var size = Math.random() * 10 + 1;
-    var nodeGeometry = new THREE.CubeGeometry(size, size, size);
+    var nodeGeometry = new THREE.BoxGeometry(size, size, size);
     var nodeMaterial = new THREE.MeshBasicMaterial({ color: getNiceColor() });
     return new THREE.Mesh(nodeGeometry, nodeMaterial);
   }).createLinkUI(function() {
