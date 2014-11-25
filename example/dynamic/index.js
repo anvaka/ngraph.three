@@ -12,7 +12,7 @@ module.exports.main = function () {
     return new THREE.Mesh(nodeGeometry, nodeMaterial);
   }).createLinkUI(function() {
     var linkGeometry = new THREE.Geometry();
-    // we don't cara about position here. linkRenderer will update it
+    // we don't care about position here. linkRenderer will update it
     linkGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
     linkGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
 

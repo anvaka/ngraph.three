@@ -50,7 +50,7 @@ module.exports = function (graph, settings) {
      * @returns {object} arbitrary object which will be later passed to renderNode
      */
     /**
-     * This function allows clients to pass custon node UI creation callback
+     * This function allows clients to pass custom node UI creation callback
      *
      * @param {createNodeUICallback} createNodeUICallback - The callback that
      * creates new node UI
@@ -93,7 +93,7 @@ module.exports = function (graph, settings) {
      * @returns {object} arbitrary object which will be later passed to renderNode
      */
     /**
-     * This function allows clients to pass custon node UI creation callback
+     * This function allows clients to pass custom node UI creation callback
      *
      * @param {createLinkUICallback} createLinkUICallback - The callback that
      * creates new link UI
@@ -127,7 +127,7 @@ module.exports = function (graph, settings) {
     },
 
     /**
-     * Stops animation and deallocates all alocated resources
+     * Stops animation and deallocates all allocated resources
      */
     dispose: dispose,
 
@@ -143,7 +143,7 @@ module.exports = function (graph, settings) {
   return graphics;
 
   function onFrame(cb) {
-    // todo: allow multile callbacks
+    // todo: allow multiple callbacks
     beforeFrameRender = cb;
   }
 
@@ -224,7 +224,7 @@ module.exports = function (graph, settings) {
     if (beforeFrameRender) {
       beforeFrameRender();
     }
-    // todo: this adds gc pressure. remove functional iterators
+    // todo: this adds GC pressure. Remove functional iterators
     Object.keys(linkUI).forEach(renderLink);
     Object.keys(nodeUI).forEach(renderNode);
     renderer.render(scene, camera);
