@@ -1,6 +1,10 @@
 # ngraph.three
 
-This is a 3d graph renderer, which uses [three.js](https://github.com/mrdoob/three.js) as a rendering engine. This library is a part of [ngraph](https://github.com/anvaka/ngraph) project.
+This is a 3d graph renderer, which uses [three.js](https://github.com/mrdoob/three.js) as a rendering engine. 
+This library is a part of [ngraph](https://github.com/anvaka/ngraph) project. 
+Please check out [ngraph.pixel](https://github.com/anvaka/ngraph.pixel) - it is also developed with three.js,
+however it uses lower level primitive ([ShaderMaterial](http://threejs.org/docs/#Reference/Materials/ShaderMaterial)
+which allows it to be really fast (the price is flexibility of your UI model).
 
 # usage
 
