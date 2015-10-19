@@ -62,6 +62,11 @@ module.exports = function (graph, settings) {
       return this;
     },
 
+
+    rebuild : function () {
+      rebuildUI();
+    },
+
     /**
      * This callback is called by graphics when it wants to render node on
      * a screen.
@@ -127,6 +132,12 @@ module.exports = function (graph, settings) {
     },
 
     /**
+     * Exposes the resetStable method.
+     * This is useful if you want to allow users to update the physics settings of your layout interactively
+     */
+    resetStable: resetStable,
+
+  /**
      * Stops animation and deallocates all allocated resources
      */
     dispose: dispose,
