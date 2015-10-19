@@ -63,6 +63,9 @@ module.exports = function (graph, settings) {
     },
 
 
+    /**
+     * Force a rebuild of the UI. This might be necessary after settings have changed
+     */
     rebuild : function () {
       rebuildUI();
     },
