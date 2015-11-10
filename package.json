@@ -19,15 +19,15 @@
     "url": "https://github.com/anvaka/ngraph.three"
   },
   "dependencies": {
-    "ngraph.forcelayout3d": "0.0.5",
+    "ngraph.forcelayout3d": "0.0.15",
     "ngraph.merge": "0.0.1",
     "three": "0.68.0",
     "three.trackball": "0.0.1"
   },
   "devDependencies": {
-    "browserify": "~3.23.1",
+    "browserify": "^12.0.1",
     "ngraph.generators": "0.0.3",
-    "query-string": "~0.1.1",
-    "ngraph.graph": "0.0.4"
+    "ngraph.graph": "0.0.12",
+    "query-string": "~0.1.1"
   }
 }
