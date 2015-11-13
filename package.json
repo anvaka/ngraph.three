@@ -21,7 +21,7 @@
   "dependencies": {
     "ngraph.forcelayout3d": "0.0.15",
     "ngraph.merge": "0.0.1",
-    "three": "0.68.0",
+    "three": "0.72.0",
     "three.trackball": "0.0.1"
   },
   "devDependencies": {
