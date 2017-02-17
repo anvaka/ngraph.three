@@ -4,7 +4,8 @@
   "description": "3D graph rendered powered by three.js",
   "main": "index.js",
   "scripts": {
-    "examples": "cd ./example/basic && browserify -s ngraph index.js  > bundle.js; cd ../dynamic && browserify -s ngraph index.js  > bundle.js"
+    "peers": "npm-install-peers",
+    "examples": "npm run peers && cd ./example/basic && browserify -s ngraph index.js  > bundle.js; cd ../dynamic && browserify -s ngraph index.js  > bundle.js"
   },
   "keywords": [
     "ngraph",
@@ -24,12 +25,13 @@
     "three.trackball": "^0.0.1"
   },
   "peerDependencies": {
-    "three": "^0.x.x"  
+    "three": "^0.x.x"
   },
   "devDependencies": {
     "browserify": "^12.0.1",
     "ngraph.generators": "0.0.3",
     "ngraph.graph": "0.0.12",
+    "npm-install-peers": "^1.0.1-rc.3",
     "query-string": "~0.1.1"
   }
 }
