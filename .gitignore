@@ -8,6 +8,7 @@ lib-cov
 *.gz
 *.tgz
 .idea
+.DS_Store
 bundle.js
 
 pids
