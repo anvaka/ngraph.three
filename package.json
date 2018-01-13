@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "browserify": "^12.0.1",
-    "ngraph.generators": "0.0.3",
-    "ngraph.graph": "0.0.12",
+    "ngraph.generators": "0.0.18",
+    "ngraph.graph": "0.0.14",
     "npm-install-peers": "^1.0.1-rc.3",
     "query-string": "~0.1.1"
   }
