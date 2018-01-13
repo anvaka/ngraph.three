@@ -1,6 +1,6 @@
 {
   "name": "ngraph.three",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "3D graph rendered powered by three.js",
   "main": "index.js",
   "scripts": {
